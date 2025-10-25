@@ -25,11 +25,11 @@ $$
 
 ## 🧩 Fitur Utama
 
-✅ Mengunduh data historis otomatis (via `yfinance`)
-✅ Menghitung return dan kovarians tahunan
-✅ Menjalankan optimasi berbasis Genetic Algorithm
-✅ Visualisasi hasil (fitness history, efficient frontier, pie chart)
-✅ Dapat digunakan untuk **Saham, Crypto, dan Reksadana**
+* ✅ Mengunduh data historis otomatis (via `yfinance`)
+* ✅ Menghitung return dan kovarians tahunan
+* ✅ Menjalankan optimasi berbasis Genetic Algorithm
+* ✅ Visualisasi hasil (fitness history, efficient frontier, pie chart)
+* ✅ Dapat digunakan untuk **Saham, Crypto, dan Reksadana**
 
 ---
 
