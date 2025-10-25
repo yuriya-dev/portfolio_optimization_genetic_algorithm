@@ -62,7 +62,7 @@ di **Jupyter Notebook** atau **VS Code** (Jupyter extension).
 
 ## 💼 Ketentuan Setiap Jenis Aset
 
-### 🟩 Saham
+### <img src="https://img.icons8.com/fluency-systems-filled/48/40C057/positive-dynamic.png" width="26" alt="Stocks Icon" style="vertical-align: middle;"> Saham
 
 * **Ticker format:** `'BBCA.JK'`, `'ADRO.JK'`, dst
 * **Tahun bursa:** 252 hari
@@ -76,7 +76,7 @@ di **Jupyter Notebook** atau **VS Code** (Jupyter extension).
 
 ---
 
-### 🟨 Crypto
+### <img src="https://img.icons8.com/fluency-systems-filled/48/FAB005/bitcoin.png" width="26" alt="Crypto Icon" style="vertical-align: middle;"> Crypto
 
 * **Ticker format:** `'BTC-USD'`, `'ETH-USD'`, `'BNB-USD'`, `'SOL-USD'`
 * **Pasar 24/7:** gunakan 365 hari
@@ -91,7 +91,7 @@ di **Jupyter Notebook** atau **VS Code** (Jupyter extension).
 
 ---
 
-### 🗭️ Reksadana
+### <img src="https://img.icons8.com/fluency-systems-filled/48/4A90E2/pie-chart.png" width="26" alt="Mutual Funds Icon" style="vertical-align: middle;"> Reksadana
 
 * **Data:** gunakan file CSV NAV (Nilai Aktiva Bersih) harian/bulanan
 * **Risk Aversion:** 0.7 – 1.2
