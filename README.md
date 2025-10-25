@@ -17,9 +17,9 @@ Dengan pendekatan **Algoritma Genetika (Genetic Algorithm)**, sistem akan:
 * Mengevaluasi berdasarkan fungsi *fitness*,
 * Melakukan **seleksi, crossover, dan mutasi**, hingga menemukan kombinasi bobot terbaik.
 
-[
+$$
 \text{Fitness} = \text{Return} - \lambda \times \text{Risk}
-]
+$$
 
 ---
 
