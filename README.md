@@ -136,12 +136,12 @@ di **Jupyter Notebook** atau **VS Code** (Jupyter extension).
 
 ## 📊 Contoh Output
 
-| Visualisasi                                           | Deskripsi                                  |
-| ----------------------------------------------------- | ------------------------------------------ |
-| ![Fitness Plot](outputs/fitness_plot.png)             | Evolusi fitness tiap generasi              |
+| Visualisasi | Deskripsi |
+| :--- | :--- |
+| ![Fitness Plot](outputs/fitness_plot.png) | Evolusi fitness tiap generasi |
 | ![Efficient Frontier](outputs/efficient_frontier.png) | Perbandingan GA optimal vs portofolio acak |
-| ![Pie Chart](outputs/portfolio_pie.png)               | Distribusi bobot tiap aset                 |
-| ![CSV](outputs/best_portfolio_weights.csv)            | Bobot optimal tiap saham (file CSV)        |
+| ![Pie Chart](outputs/portfolio_pie.png) | Distribusi bobot tiap aset |
+| [best_portfolio_weights.csv](outputs/best_portfolio_weights.csv) | Bobot optimal tiap saham (file CSV) |
 
 
 ---
