@@ -145,6 +145,47 @@ di **Jupyter Notebook** atau **VS Code** (Jupyter extension).
 
 
 ---
+## 📚 Dokumentasi & Penjelasan
+
+<div align="center">
+
+### 🎓 Ingin Memahami Algoritma Lebih Dalam?
+
+Kami menyediakan **penjelasan lengkap** untuk setiap cell dalam notebook!
+
+[![Baca Dokumentasi](https://img.shields.io/badge/📖_Baca_Dokumentasi-ExplanationofEachCell.md-blue?style=for-the-badge)](./ExplanationofEachCell.md)
+
+</div>
+
+**📋 Apa yang akan Anda pelajari:**
+
+- 🧬 **Algoritma Genetika** - Bagaimana GA mencari portofolio optimal
+- 📈 **Return & Risk** - Rumus perhitungan ekspektasi return dan volatilitas
+- 🎯 **Fungsi Fitness** - Objektif optimasi dengan risk aversion
+- 🔄 **Evolusi** - Proses seleksi, crossover, dan mutasi
+- 📊 **Visualisasi** - Interpretasi efficient frontier dan komposisi portofolio
+
+---
+
+<details>
+<summary>🔍 <b>Preview Konten</b></summary>
+
+<br>
+
+| Cell | Topik | Deskripsi |
+|------|-------|-----------|
+| 1-3 | Setup | Import library & konfigurasi parameter |
+| 4-7 | Data | Download & preprocessing data historis |
+| 8-11 | Core GA | Inisialisasi & fungsi fitness |
+| 12-15 | Evolution | Seleksi, crossover, mutasi & iterasi |
+| 16-22 | Results | Portofolio optimal & visualisasi |
+
+</details>
+
+> 💡 **Pro Tip:** Buka dokumentasi di tab terpisah sambil menjalankan notebook untuk pengalaman belajar yang optimal!
+
+---
+
 
 ## 🧠 Saran Pengembangan
 
