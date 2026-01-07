@@ -36,9 +36,9 @@ Data ini merepresentasikan **persentase keuntungan atau kerugian harian** dari m
 
 ### Rumus
 
-[
-Return = \frac{Harga_{hari_ini} - Harga_{kemarin}}{Harga_{kemarin}}
-]
+$$
+\text{Return} = \frac{Harga_{hari_ini} - Harga_{kemarin}}{Harga_{kemarin}}
+$$
 
 ### Contoh Data
 
@@ -158,9 +158,11 @@ Populasi adalah sekumpulan individu dalam satu generasi.
 
 Menilai kualitas portofolio.
 
-[
-Fitness = Return - (\lambda \times Risk)
-]
+
+$$
+\text{Fitness} = \text{Return} - (\lambda \times \text{Risk})
+$$
+
 
 ```python
 def fitness(weights, risk_aversion=RISK_AVERSION):
