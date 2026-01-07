@@ -1,6 +1,6 @@
 # 📂 Dokumentasi Data Input: Optimasi Portofolio
 
-Dokumen ini menjelaskan tiga komponen data utama yang digunakan sebagai **"bahan bakar" Algoritma Genetika** untuk menentukan komposisi portofolio saham terbaik, serta penjelasan mengenai konsep **Algoritma Genetika (Genetic Algorithm / GA)** itu sendiri.
+Dokumen ini menjelaskan tiga komponen data utama yang digunakan sebagai **"bahan bakar" Algoritma Genetika (Genetic Algorithm / GA)** untuk menentukan komposisi portofolio saham terbaik, serta penjelasan konsep GA itu sendiri.
 
 ---
 
@@ -22,9 +22,9 @@ File ini berisi data mentah pergerakan harga saham historis. Nilai yang digunaka
 * **Fungsi:** Sebagai data dasar (*raw material*). Algoritma tidak menggunakan nominal harga secara langsung, melainkan **perubahan harganya**.
 * **Sektor Saham:**
 
-  * **ADRO & PTBA** → Sektor Energi (Batu Bara), cenderung siklikal dan fluktuatif.
-  * **BBCA & BBNI** → Sektor Perbankan (Blue Chip), relatif stabil dan defensif.
-  * **ANTM** → Sektor Mineral (Emas/Nikel), dipengaruhi harga komoditas global.
+  * **ADRO & PTBA** → Energi (Batu Bara), cenderung siklikal dan fluktuatif
+  * **BBCA & BBNI** → Perbankan (*Blue Chip*), relatif stabil dan defensif
+  * **ANTM** → Mineral (Emas/Nikel), dipengaruhi harga komoditas global
 
 ---
 
@@ -32,9 +32,9 @@ File ini berisi data mentah pergerakan harga saham historis. Nilai yang digunaka
 
 **File:** `return_harian_saham.csv`
 
-Data ini merepresentasikan **persentase keuntungan atau kerugian harian** dari masing-masing saham.
+Data ini merepresentasikan **persentase keuntungan atau kerugian harian** investor.
 
-### Rumus
+### Rumus Return Harian
 
 $$
 \text{Return} = \frac{Harga_{hari_ini} - Harga_{kemarin}}{Harga_{kemarin}}
@@ -49,13 +49,13 @@ $$
 
 ### Analisis & Arti Angka
 
-* **-0.0295 (ADRO):** Harga ADRO turun 2.95%.
-* **0.0446 (BBNI):** Harga BBNI naik 4.46%.
+* **-0.0295 (ADRO):** Harga ADRO turun 2.95%
+* **0.0446 (BBNI):** Harga BBNI naik 4.46%
 
 ### Peran dalam Algoritma Genetika
 
-* Rata-rata return harian (yang disetahunkan) menjadi **Expected Return**.
-* GA akan mencari kombinasi bobot saham yang menghasilkan **return total tertinggi**.
+* Rata-rata return (disetahunkan) menjadi **Expected Return**
+* GA mencari kombinasi bobot saham dengan **return portofolio tertinggi**
 
 ---
 
@@ -63,7 +63,7 @@ $$
 
 **File:** `matriks_kovarians.csv`
 
-Matriks ini adalah komponen paling krusial untuk **manajemen risiko**. Nilainya menunjukkan hubungan pergerakan antar saham yang telah disetahunkan (× 252 hari bursa).
+Matriks ini merupakan komponen paling krusial dalam **manajemen risiko**. Nilainya menunjukkan hubungan pergerakan antar saham yang telah disetahunkan (× 252 hari bursa).
 
 ### Contoh Data
 
@@ -79,103 +79,96 @@ Matriks ini adalah komponen paling krusial untuk **manajemen risiko**. Nilainya 
 
 #### A. Diagonal Utama (Risiko Individu)
 
-Nilai diagonal adalah **varians**, menunjukkan tingkat risiko masing-masing saham.
-
-* **ADRO (0.192) & ANTM (0.187):** Risiko tinggi (fluktuatif).
-* **BBCA (0.053):** Risiko rendah (stabil).
+* Nilai diagonal adalah **varians** (risiko masing-masing saham)
+* **ADRO (0.192) & ANTM (0.187):** Risiko tinggi (*high risk*)
+* **BBCA (0.053):** Risiko rendah (*low risk*), berperan sebagai penyeimbang portofolio
 
 #### B. Non-Diagonal (Hubungan Antar Saham)
 
-Nilai di luar diagonal adalah **kovarians**.
-
-* **ADRO vs PTBA (0.0689):** Korelasi positif tinggi → diversifikasi kurang efektif.
-* **BBCA vs ANTM (0.0099):** Hampir tidak berkorelasi → diversifikasi sangat baik.
+* Nilai di luar diagonal adalah **kovarians**
+* **ADRO vs PTBA (0.0689):** Korelasi positif tinggi → diversifikasi lemah
+* **BBCA vs ANTM (0.0099):** Hampir tidak berkorelasi → diversifikasi sangat baik
 
 ---
 
 ## 4. Sintesis: Cara GA Menggunakan Data
 
-Saat menghitung **Fitness**, GA melakukan:
+Saat menghitung **fitness** sebuah portofolio, GA melakukan langkah berikut:
 
-1. **Ambil Gen (Bobot):** Contoh `{ADRO: 50%, BBCA: 50%}`
-2. **Hitung Return:** Dari rata-rata return harian.
-3. **Hitung Risiko:** Dari matriks kovarians.
+1. **Ambil Gen (Bobot)**
+   Contoh: `{ADRO: 50%, BBCA: 50%}`
+2. **Hitung Return** menggunakan rata-rata return harian
+3. **Hitung Risiko** menggunakan matriks kovarians
 
 ### Keputusan
 
-* Korelasi ADRO–BBCA rendah → risiko gabungan menurun.
-* Portofolio dinilai **efisien** (return tinggi, risiko terkendali).
-* Kombinasi ini memperoleh **skor fitness tinggi**.
+* Korelasi ADRO–BBCA rendah → risiko gabungan menurun
+* Portofolio dinilai **efisien**
+* GA memberikan **skor fitness tinggi**
 
 ---
 
 ## 5. Analogi Biologi dalam Algoritma Genetika
 
-GA mengadopsi konsep evolusi biologi ke dalam pemrograman.
+GA mengadaptasi konsep evolusi biologi ke dalam pemrograman optimasi.
 
 ### Tabel Perbandingan
 
-| Konsep Biologi | Dalam Kode Python | Representasi Data |
-| -------------- | ----------------- | ----------------- |
-| Gen            | Bobot saham       | Float (mis. 0.2)  |
-| Kromosom       | Satu portofolio   | Array NumPy       |
-| Individu       | Solusi kandidat   | Kromosom          |
-| Populasi       | Kumpulan solusi   | List of arrays    |
-| Fitness        | Skor kualitas     | Return − Risiko   |
+| Konsep Biologi | Dalam GA        | Representasi Data |
+| -------------- | --------------- | ----------------- |
+| Gen            | Bobot saham     | Float (0–1)       |
+| Kromosom       | Portofolio      | Array NumPy       |
+| Individu       | Solusi kandidat | Kromosom          |
+| Populasi       | Kumpulan solusi | List individu     |
+| Fitness        | Skor kualitas   | Return − Risiko   |
 
 ---
 
+## Penjelasan Detail Konsep
+
 ### A. Gen
 
-Gen adalah bobot alokasi untuk satu saham.
-
-* 5 saham → 5 gen per individu.
-* Contoh: ADRO 20% → gen = `0.20`.
+* Bobot alokasi dana satu saham
+* Nilai antara **0.0 – 1.0**
+* Contoh: BBCA = 30% → gen = `0.30`
 
 ### B. Kromosom & Individu
 
-Kromosom adalah kumpulan gen yang membentuk satu strategi portofolio.
+* Gabungan gen membentuk satu strategi portofolio
+* Struktur:
 
-```python
-def create_individual():
-    w = np.random.rand(n_assets)
-    return w / np.sum(w)
-```
+  ```
+  [ADRO, ANTM, BBCA, BBNI, PTBA]
+  ```
+* Contoh:
 
-Contoh output:
-
-```
-[0.1, 0.4, 0.2, 0.1, 0.2]
-```
+  ```
+  [0.10, 0.20, 0.30, 0.25, 0.15]
+  ```
 
 ### C. Populasi
 
-Populasi adalah sekumpulan individu dalam satu generasi.
-
-* Contoh: `POP_SIZE = 100`.
+* Kumpulan individu dalam satu generasi
+* Contoh: `POP_SIZE = 100`
 
 ### D. Fitness (Fungsi Kelayakan)
 
-Menilai kualitas portofolio.
-
-
 $$
-\text{Fitness} = \text{Return} - (\lambda \times \text{Risk})
+\text{Fitness} = \text{Return} - (0.5 \times \text{Risk})
 $$
 
+**Simulasi:**
 
-```python
-def fitness(weights, risk_aversion=RISK_AVERSION):
-    ret = portfolio_return(weights)
-    risk = portfolio_risk(weights)
-    return ret - risk_aversion * risk
-```
+* Individu Agresif → Skor = 7.5
+* Individu Defensif → Skor = 10.0
+
+➡️ **Individu Defensif menang**
 
 ### E. Generasi & Alur Evolusi
 
-1. **Inisialisasi:** Populasi awal acak
-2. **Evaluasi:** Hitung fitness
-3. **Seleksi:** Pilih induk terbaik
-4. **Crossover:** Gabungkan gen
-5. **Mutasi:** Acak kecil untuk variasi
-6. **Iterasi:** Hingga ditemukan **portofolio optimal**
+1. Inisialisasi populasi acak
+2. Evaluasi fitness
+3. Seleksi induk terbaik
+4. Crossover
+5. Mutasi kecil
+6. Iterasi hingga solusi optimal
